@@ -1,0 +1,73 @@
+﻿@page "/client/create"
+@page "/client/{ID:int}/edit"
+
+@inject UnitOfWork UnitOfWork;
+@inject NavigationManager NavigationManager
+
+@if (customer == null)
+{
+    <h1>Loading...</h1>
+}
+else
+{
+    <h1>@Header</h1>
+    <EditForm Model="@customer" OnValidSubmit="@Save" Context="EditFormContext">
+        <DxFormLayout>
+            <DxFormLayoutItem Caption="First Name:">
+                <Template>
+                    <DxTextBox @bind-Text="@customer.Name" />
+                </Template>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Last Name:">
+                <Template>
+                    <DxTextBox @bind-Text="@customer.LastName" />
+                </Template>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem ColSpanMd="12">
+                <Template>
+                    <DxButton SubmitFormOnClick="true" Text="Submit" />
+                </Template>
+            </DxFormLayoutItem>
+        </DxFormLayout>
+    </EditForm>
+}
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+    <div class="alert-danger">@errorMessage</div>
+}
+
+@code {
+    [Parameter]
+    public int? ID { get; set; }
+    Clients customer;
+    string errorMessage;
+    string Header
+    {
+        get
+        {
+            if (customer == null || string.IsNullOrWhiteSpace(customer.Name))
+                return "---";
+            else
+                return customer.Name;
+        }
+    }
+    protected async override Task OnInitializedAsync()
+    {
+        if (ID.HasValue)
+            customer = await UnitOfWork.GetObjectByKeyAsync<Clients>(ID.Value);
+        else
+            customer = new Clients(UnitOfWork);
+    }
+    async Task Save()
+    {
+        try
+        {
+            await UnitOfWork.CommitChangesAsync();
+            NavigationManager.NavigateTo("/client");
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+    }
+}

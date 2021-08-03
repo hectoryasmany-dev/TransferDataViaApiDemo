@@ -1,0 +1,66 @@
+﻿@page "/client"
+@inject UnitOfWork UnitOfWork
+@inject NavigationManager NavigationManager
+
+
+<h1>Customers</h1>
+<DxDataGrid Data="@customers">
+    <DxDataGridColumn EditorVisible="false">
+        <DisplayTemplate>
+            @{
+                Clients customer = (Clients)context;
+                <DxButton RenderStyle="ButtonRenderStyle.Link" Text="Edit" Click="@(() => Edit(customer))" />
+                <DxButton RenderStyle="ButtonRenderStyle.Link" Text="Delete" Click="@(() => Delete(customer))" />
+            }
+        </DisplayTemplate>
+    </DxDataGridColumn>
+    <DxDataGridColumn Field="@nameof(Clients.Name)" Caption="First Name" />
+    <DxDataGridColumn Field="@nameof(Clients.LastName)" Caption="Last Name" />
+</DxDataGrid>
+<DxButton RenderStyle="ButtonRenderStyle.Link" Text="New" Click="@(() => Edit(null))" />
+
+@if (operationInProgress)
+{
+    <div class="alert-info">Wait...</div>
+}
+@if (!string.IsNullOrWhiteSpace(errorMessage))
+{
+    <div class="alert-danger">@errorMessage</div>
+}
+
+@code {
+    IQueryable<Clients> customers;
+    bool operationInProgress;
+    string errorMessage;
+
+    protected override void OnInitialized()
+    {
+        customers = UnitOfWork.Query<Clients>();
+        //var clientes = customers.Count();
+    }
+    async Task Delete(Clients customer)
+    {
+        operationInProgress = true;
+        try
+        {
+            UnitOfWork.Delete(customer);
+            await UnitOfWork.CommitChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            errorMessage = ex.Message;
+        }
+        finally
+        {
+            operationInProgress = false;
+            customers = UnitOfWork.Query<Clients>();
+        }
+    }
+    void Edit(Clients cliente)
+    {
+        if (cliente == null)
+            NavigationManager.NavigateTo("/client/create");
+        else
+            NavigationManager.NavigateTo($"/client/{cliente.Oid}/edit");
+    }
+}
