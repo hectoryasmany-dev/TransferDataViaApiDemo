@@ -9,9 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferDataWinBackend.Modu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferDataWinBackend.Win", "TransferDataWinBackend.Win\TransferDataWinBackend.Win.csproj", "{4AA438F4-30D3-48D1-8963-1C2A78A9584E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferDataBackendApi", "TransferDataBackendApi\TransferDataBackendApi.csproj", "{4C815E7A-52F4-42A5-862A-AB700C6E6A8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransferDataBackendApi", "TransferDataBackendApi\TransferDataBackendApi.csproj", "{4C815E7A-52F4-42A5-862A-AB700C6E6A8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferDataWASM_Client", "TransferDataWASM_Client\TransferDataWASM_Client.csproj", "{4898CA2E-2AE6-47C9-BC35-105890C8F63B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransferDataWASM_Client", "TransferDataWASM_Client\TransferDataWASM_Client.csproj", "{4898CA2E-2AE6-47C9-BC35-105890C8F63B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferDataXamarinForms", "TransferDataXamarinForms\TransferDataXamarinForms\TransferDataXamarinForms.csproj", "{5AE64429-08F6-441B-B130-7DFDAAA84778}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferDataXamarinForms.Android", "TransferDataXamarinForms\TransferDataXamarinForms.Android\TransferDataXamarinForms.Android.csproj", "{1DB51AF1-6DE7-4E45-B85A-FEFD6BE19D43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +54,21 @@ Global
 		{4898CA2E-2AE6-47C9-BC35-105890C8F63B}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
 		{4898CA2E-2AE6-47C9-BC35-105890C8F63B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4898CA2E-2AE6-47C9-BC35-105890C8F63B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AE64429-08F6-441B-B130-7DFDAAA84778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AE64429-08F6-441B-B130-7DFDAAA84778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AE64429-08F6-441B-B130-7DFDAAA84778}.EasyTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AE64429-08F6-441B-B130-7DFDAAA84778}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
+		{5AE64429-08F6-441B-B130-7DFDAAA84778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AE64429-08F6-441B-B130-7DFDAAA84778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB51AF1-6DE7-4E45-B85A-FEFD6BE19D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB51AF1-6DE7-4E45-B85A-FEFD6BE19D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB51AF1-6DE7-4E45-B85A-FEFD6BE19D43}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1DB51AF1-6DE7-4E45-B85A-FEFD6BE19D43}.EasyTest|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB51AF1-6DE7-4E45-B85A-FEFD6BE19D43}.EasyTest|Any CPU.Build.0 = Debug|Any CPU
+		{1DB51AF1-6DE7-4E45-B85A-FEFD6BE19D43}.EasyTest|Any CPU.Deploy.0 = Debug|Any CPU
+		{1DB51AF1-6DE7-4E45-B85A-FEFD6BE19D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB51AF1-6DE7-4E45-B85A-FEFD6BE19D43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB51AF1-6DE7-4E45-B85A-FEFD6BE19D43}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

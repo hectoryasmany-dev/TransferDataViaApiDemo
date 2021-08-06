@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+	xmlns:local="clr-namespace:TransferDataXamarinForms.Views;assembly=TransferDataXamarinForms"
+    x:Class="TransferDataXamarinForms.Views.Index"
+    Title="Index">
+
+
+
+    <StackLayout>
+        <Button Text="Sync" Command="{Binding SyncCommand}" BackgroundColor="Blue" TextColor="White" FontSize="Medium" Margin="0"/>
+        <Button Command="{Binding CreateCommand}" Text="Push" BackgroundColor="Blue" TextColor="White" FontSize="Medium" Margin="0"/>
+        <ListView x:Name="ItemsListView" 
+                 ItemsSource="{Binding People}"
+                 RefreshCommand="{Binding LoadDataCommand}"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 VerticalOptions="FillAndExpand"
+                 HasUnevenRows="true"                 
+                 IsPullToRefreshEnabled="true"                 
+                >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding Name}" 
+                           LineBreakMode="NoWrap" 
+                           
+                           FontSize="16" />
+                                <Label Text="{Binding LastName}" 
+                           LineBreakMode="NoWrap"                          
+                           FontSize="13" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+
+</ContentPage>
+
